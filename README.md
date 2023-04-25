@@ -11,7 +11,7 @@ Simulation: Used to estimate a possible result of an arbitrary game played from 
 
 Backpropagation: Used to store the result, obtained in the simulation step, in all nodes occurring in the simulation path. This helps us differentiate better nodes from the sibling nodes at all levels of the game tree.
 
-Finally we return the best child of the main//root node, which stores the current state of the game, therefore returning the best possible move at the current position, based on the average win to simulation ratio of each child node.
+Finally, we return the best child of the main//root node, which stores the current state of the game, therefore returning the best possible move at the current position, based on the average win to simulation ratio of each child node.
 
 Additionally, while giving the respective weightage to wins, losses and draws, it is important that win does not have a very high ratio with draw, because in that model, algorithm will try to win from any state making it vulnerable to losing, while draw was a very possible solution. So, it is important that the ratio of Wins_score/Draw_score is higher than 1 but very close to it.
 
