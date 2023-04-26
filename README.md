@@ -1,18 +1,21 @@
 # Connect-4
-Connect 4 is a turn based game, where 2 players drop colored disks in a grid with 7 columns and 6 rows. The disks drop to the lowest empty row in the chosen column. A players wins the game when a consecutive horizontal, vertical or diagonal line of own 4 disks is formed.
+In the turn-based game Connect 4, two players place coloured discs in a grid with seven columns and six rows. The specified column's lowest vacant row is where the discs will land. A player wins the game when their own four discs are lined up in a straight horizontal, vertical or diagonal line.
 
-The algorithm uses the Monte Carlo Tree Search method to find the most optimal move from the current game state. The algorithm consists of four steps, namely: selection, expansion, simulation, backpropagation.
 
-Selection: In this step, the algorithm chooses the best possible child of a node based on the trust value of the children. The trust value consists of two terms: exploratory term and exploitation term which control the ratio of respective methods.
+To determine the best course of action given the present state of the game, the programme employs the Monte Carlo Tree Search technique. Four steps make up the algorithm: selection, expansion, simulation, and backpropagation.
 
-Expansion: This method is used to find all possible children of a node from a current given node, based on the possible moves that can be played from that node.
+Selection: Based on the children's trust values, the algorithm selects the best node's child in this stage. The exploratory term and the exploitation term, which regulate the ratio of the respective procedures, make up the two words that make up the trust value.
 
-Simulation: Used to estimate a possible result of an arbitrary game played from the given state of the game. This estimate will be used to find how good or reliable a node is, as compared to its sibling nodes.
+Expansion: Based on the conceivable moves that might be made from the present node, this approach is used to determine all potential children of a node from that node.
 
-Backpropagation: Used to store the result, obtained in the simulation step, in all nodes occurring in the simulation path. This helps us differentiate better nodes from the sibling nodes at all levels of the game tree.
+Simulation: Used to predict a potential outcome of a random game based on the current game state. This estimate will be used to compare a node's performance or dependability to that of its siblings.
 
-Finally, we return the best child of the main//root node, which stores the current state of the game, therefore returning the best possible move at the current position, based on the average win to simulation ratio of each child node.
+Backpropagation: Used to record the outcome of the simulation step in each node along the path of the simulation. At all levels of the game tree, this enables us to distinguish better nodes from their siblings.
 
-Additionally, while giving the respective weightage to wins, losses and draws, it is important that win does not have a very high ratio with draw, because in that model, algorithm will try to win from any state making it vulnerable to losing, while draw was a very possible solution. So, it is important that the ratio of Wins_score/Draw_score is higher than 1 but very close to it.
+Then, depending on the average win to simulation ratio of each child node, we return the best child of the main//root node, which stores the game's current state. This returns the best move that can be made at the present location.
 
-Choice of exploratory constant(C): The choice of C, depending on the number of simulations, has an impact on the results achieved.As the number of simulations increases, more iterations are available to explore more possible moves and thus higher value of C should be preferred with increasing simulations. Therefore a higher value of C prefers the MC200 algorithm to give better results than MC40, whereas a lower value of C prefers MC40 to exploit better moves thus giving precise results in respective cases. This relation is also visible in the small sample of data tabulated above, where as C decreases the performance of MC40 improves, whereas when C increases the performance of MC200 gets better.
+Furthermore, it is crucial to ensure that wins do not have a very high ratio with draws when assigning the appropriate weights to wins, losses, and draws. In that model, the algorithm will attempt to win from any position, making it vulnerable to losing, while drawings were a very viable option. The Wins_score/Draw_score ratio must therefore be higher than 1 but extremely near to it.
+
+Choice of exploratory constant(C): The best child of the main//root node, which records the game's current state, is then returned based on the average win to simulation ratio of each child node. The best move that can be made at the current location is returned by this.
+
+Furthermore, when determining the right weights for wins, losses, and draws, it is essential to make sure that winners do not have a particularly high ratio with draws. Drawings were a very plausible choice since in that approach, the algorithm will try to win from any position, making it prone to losing. Therefore, the Wins_score/Draw_score ratio must be greater than 1 but very close to it.
