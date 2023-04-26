@@ -33,7 +33,6 @@ class Node:
         return all_moves
         
     def selection(self,C):
-        # find child with max score
         max = -inf
         selected = None
         
@@ -58,7 +57,7 @@ class Node:
         self.wins += result
         self.visits += 1
 
-    # untried child should not be their
+        
     def not_tried_child(self):
         for move in self.moves.values():
             if(not move):
@@ -86,7 +85,7 @@ def MCTS(currentState, itermax, currentNode=None,C=5):
             node = node.selection(C)
             state.move(node.move)
 
-        # expand
+       
         if not node.not_tried_child():
             m = -1
             for key in node.moves:
@@ -97,13 +96,13 @@ def MCTS(currentState, itermax, currentNode=None,C=5):
             state.move(m)        
             node = node.expand(m, state)
         
-        # rollout
+        
         while state.getMoves():
             r = state.getMoves()
             state.move(r[random.randint(0,len(r)-1)])
 
             
-        # backpropagate
+        
         while node is not None:
             node.update(state.result(node.player))
             node = node.parent
@@ -156,7 +155,7 @@ class Connect4:
     def isValidMove(self, col): 
         return self.board[0][col] == 0
     
-    # ####
+   
     def winner(self):
         #row
         s = ''
@@ -169,7 +168,7 @@ class Connect4:
                 return 2
             s = ''
 
-        #column wise
+        
         s = ''
         for column in range(self.COLUMN):
             for row in range(self.ROW):
@@ -180,7 +179,7 @@ class Connect4:
                 return 2
             s = ''
         
-        #main diagonal directional diagnals
+        
         s = ''
         for rs in range(self.ROW):
             row = rs
@@ -209,7 +208,7 @@ class Connect4:
                 return 2
             s = ''
                 
-        #secondary diagonal directional diagnals
+        
         s = ''
         for rs in range(self.ROW):
             row = rs
@@ -256,7 +255,7 @@ class Connect4:
     def complete(self):  
         return self.winner() or not self.getMoves()
     
-    # returns list of available moves
+    
     def getMoves(self):
         moves = []
         if self.winner():
@@ -303,12 +302,7 @@ def goto_childNode(node, board, move):
             return childnode
     return Node(state=board)
 
-# oROW, oCOLUMN = 6,5 
-# order = 0           
-# c4 = Connect4(oROW, oCOLUMN) 
-# c4.print_board() 
 
-# begin_game(c4, order)
 
 def chose_action():
     print("Press 1 for MC200 vs MC40")
@@ -326,7 +320,7 @@ chose_action()
 
 
 
-###############
+
 
 def PrintGrid(positions):
     print('\n'.join(' '.join(str(x) for x in row) for row in positions))
